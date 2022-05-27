@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyShop.DataAccess.InMemory
 {
-    class ProductRepository
+    public class ProductRepository
     {
         //using the namespace Runtime.Caching for ObjectCache,MemoryCache
 
@@ -50,6 +50,7 @@ namespace MyShop.DataAccess.InMemory
                 throw new Exception("Product not found");
             }
         }
+        //to find an existing Product
         public Product Find(string Id)
         {
             Product productToFind = products.Find(p => p.Id == Id);
@@ -63,10 +64,14 @@ namespace MyShop.DataAccess.InMemory
             }
         
         }
+
+        // What is this and Why this is used ?
         public IQueryable<Product> Collection()
         {
             return products.AsQueryable();
         }
+
+        //To delete a Product 
         public void Delete(string Id)
         {
             Product productToDelete = products.Find(p => p.Id == Id);
