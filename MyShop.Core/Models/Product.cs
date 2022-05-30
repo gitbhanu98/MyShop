@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace MyShop.Core.Models
 {
     // By Default class will be private, we need to make this below class Public so that other classes/namespaces/projects can access this class
-    public class Product
+    public class Product : BaseEntity
     {
-        public string Id { get; set; }
+        
         
         //Limit the size of Name, display the Name of Product
         [StringLength(20)]
@@ -25,11 +25,7 @@ namespace MyShop.Core.Models
         public string Category { get; set; }
         public string Image { get; set; }
 
-        //Adding Constructor
-        public Product()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
+       
     }
 
     
