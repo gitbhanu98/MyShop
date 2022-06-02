@@ -1,6 +1,7 @@
 ﻿//This InMemoryRepository is created such that there is no need to write different Repository classes each time for different purpose. This takes an type "T" such that any item we pass can be stored in this "T". We have defined BaseEntity model in Myshop.core where every entity is defined for a product and is used as universal one for the entire project.
 //After creating this we have deleted the ProductRepository and ProductCategoryRepository as we no longer need them.
 
+using MyShop.Core.Contracts;
 using MyShop.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace MyShop.DataAccess.InMemory
 {
 
-    public class InMemoryRepository<T> where T : BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -57,7 +58,7 @@ namespace MyShop.DataAccess.InMemory
             else throw new Exception(className + "not found");
         }
 
-        public  IQueryable<T> Collection()
+        public IQueryable<T> Collection()
         {
             return items.AsQueryable();
         }

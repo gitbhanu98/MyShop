@@ -1,0 +1,9 @@
+﻿Here we are Injecting our classes as parameters to the Constructor and This should be handled using DependencyInjection (DI) container.
+We use the DI container to inject our concrete classes in place of interfaces. There are lot of DI containers to do this but we have used Microsoft Unity here.
+We have installed a Nuget Package Manager of Unity.MVC and Unity.Container on Myshop.WebUI project.
+These DI concept is implemented in both ProductManagerController and ProductCategoryMangerController.
+
+After installing the nuget packages, go to App start folder in WebUI project. Open the UnityCOnfig.cs file.
+Register our classes to the container as below:
+container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
+container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
